@@ -11,7 +11,7 @@ students.sort(function(a, b) {
   } else if (a.name > b.name) { //if a is greater move higher
     return 1;
   } else if (a.name === b.name) { //if names are equal, check age
-    if(a.age - b.age > 0) {
+    if(a.age - b.age > 0) { //if a is higher value, dont move
       return 0;
     } else {
       return 1;
