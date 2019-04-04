@@ -5,7 +5,6 @@ var map = function(arr, func) {
   arr.forEach(function(elm) {
     result.push(func(elm));
   });
-  console.log(result);
   return result;
 }
 
