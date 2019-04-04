@@ -1,15 +1,18 @@
 var countdownGenerator = function (x) {
 
   return function() {
-    if(x > 0) {
-      console.log('T-minus ' + x + '...');
-    } else if(x === 0) {
-      console.log('Blast off!');
-    } else if(x < 0) {
-      console.log('Rockets already gone, bub!');
+    switch(true) {
+      case (x > 0):
+        console.log('T-minus ' + x + '...');
+        break;
+      case(x === 0):
+        console.log('Blast off!');
+        break;
+      case(x < 0):
+        console.log('Rockets already gone, bub!');
+        break;
     }
     x--;
-    return x;
   }
 };
 
