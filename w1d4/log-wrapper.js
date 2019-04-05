@@ -16,9 +16,11 @@ var wrapLog = function (callback, name) {
   }
 };
 
+
 var area = function (x, y) {
   return x * y;
 };
+
 
 var logArea = wrapLog(area, "area");
 
