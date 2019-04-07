@@ -1,54 +1,53 @@
 var bottlesPurchased = function(money) {
-  return Math.floor(money / 2);
+ return Math.floor(money / 2);
 }
 
 var getFreeBottleCaps = function(bottles) {
-  return Math.floor(bottles / 4);
+ return Math.floor(bottles / 4);
 }
 
 var getFreeEmptyBottles = function(bottles) {
-  return Math.floor(bottles / 2);
+ return Math.floor(bottles / 2);
 }
 
 var capCount = function(bottles) {
-  return bottles % 4;
+ return bottles % 4;
 }
 
 var emptyCount = function(bottles) {
-  return bottles % 2;
+ return bottles % 2;
 }
 
-var input = 10; // 10 dollars to start
-var currentBottleCount = bottlesPurchased(input);
-var totalBottleCount = 0; // figure out how many they purchased
+var input = process.argv[2];
 var freeBottlesCap = 0;
 var freeBottlesEmpty = 0;
-var capsRemaining = 0;
-var emptyRemaining = 0;
-
+var freeCapsTotal = 0;
+var freeEmptyTotal = 0;
+var capsRemaining = bottlesPurchased(input);
+var emptyRemaining = bottlesPurchased(input);
+var totalBottleCount = bottlesPurchased(input);  // figure out how many they purchased
 
 
 var calculatingBottles = function() {
-    totalBottleCount += currentBottleCount; // adds new bottles to total
-    freeBottlesCap = getFreeBottleCaps(currentBottleCount); //
-    freeBottlesEmpty = getFreeEmptyBottles(currentBottleCount);
-    totalBottlesRedeemed = freeBottlesEmpty + freeBottlesCap;
-    capsRemaining = capCount(currentBottleCount) + totalBottlesRedeemed;
-    emptyRemaining = emptyCount(currentBottleCount) + totalBottlesRedeemed;
-    console.log('----------------');
-    console.log('current: ', currentBottleCount);
-    console.log('total: ', totalBottleCount);
-    console.log('caps: ', capsRemaining);
-    console.log('bottles: ', emptyRemaining);
+  freeBottlesCap = getFreeBottleCaps(capsRemaining); // 1 bottle
+  freeBottlesEmpty = getFreeEmptyBottles(emptyRemaining); // 2 bottles
+  freeCapsTotal += freeBottlesCap;
+  freeEmptyTotal += freeBottlesEmpty;
+  totalBottlesRedeemed = freeBottlesEmpty + freeBottlesCap; // 3 bottles
+  totalBottleCount += totalBottlesRedeemed; // adds new 5 bottles to total
+  capsRemaining = capCount(capsRemaining) + totalBottlesRedeemed; // 1 + 5 is wrong => 1 + 3
+  emptyRemaining = emptyCount(emptyRemaining) + totalBottlesRedeemed; // 1 + 3
+  console.log('----------------');
+  console.log('Total Bottles: ', totalBottleCount);
+  console.log('Remaining Caps: ', capsRemaining);
+  console.log('Remaingin Bottles: ', emptyRemaining);
+  console.log('Total Earned: ', totalBottlesRedeemed);
+  console.log('   From Bottles: ', freeEmptyTotal);
+  console.log('   From Caps: ', freeCapsTotal);
 
-    currentBottleCount += totalBottlesRedeemed;
-    return totalBottleCount;
 }
 
-
-
-do {
+while(capsRemaining >= 4 || emptyRemaining >= 2) {
   calculatingBottles();
-} while(capsRemaining >= 4 || emptyRemaining >= 2);
+}
 
-console.log(getFreeEmptyBottles(10));
