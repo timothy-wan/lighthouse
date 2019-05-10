@@ -1,0 +1,30 @@
+{
+  "name": "lighthouse",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tw5033/lighthouse.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tw5033/lighthouse/issues"
+  },
+  "homepage": "https://github.com/tw5033/lighthouse#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-plugin-react": "^7.13.0"
+  },
+  "dependencies": {
+    "express": "4.16.4",
+    "knex": "^0.16.5",
+    "pg": "^7.10.0",
+    "uuid": "^3.3.2",
+    "ws": "7.0.0"
+  },
+  "description": ""
+}
