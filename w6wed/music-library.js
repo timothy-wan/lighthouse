@@ -10,8 +10,8 @@ function Library(name, creator) {
 function Playlist(name) {
   this.name = name;
   this.tracks = [];
-  this.addTrack = function(newTrack) {
-    this.tracks.push(newTrack);
+  this.addTrack = function(newTracks) {
+    this.tracks = [...this.tracks, ...newTracks];
   }
   this.overallLength = function() {
     return this.tracks.map(track => track.length).reduce((acc, cur) => acc + cur);
@@ -35,9 +35,7 @@ const track2 = new Track('best', 2, 4.00);
 const track3 = new Track('best', 1, 3.00);
 
 
-playlist1.addTrack(track1);
-playlist1.addTrack(track2);
-playlist1.addTrack(track3);
+playlist1.addTrack([track1, track2, track3]);
 library1.addPlaylist(playlist1);
 console.log(library1);
 console.log(playlist1);
